@@ -1,3 +1,3 @@
 # Java_assignments
-# Java_assignments
-# Java_assignments
+
+Contains all the java assignments
