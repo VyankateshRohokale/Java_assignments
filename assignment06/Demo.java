@@ -1,36 +1,47 @@
-class College 
-{
-   class Student 
-    {
+import java.io.FileWriter;
 
-        void display() 
-        {
-            System.out.println("Student belongs to the College");
-        }
-    }
+import java.io.FileReader;
+import java.io.IOException;
 
-void show() 
-    {
-        System.out.println("Welcome to College");
-    }
-}
-public class Demo 
+public class Demo
 {
 
-    public static void main(String[] args) 
- {
-        College c = new College();
-        College.Student s = c.new Student();
-        s.display();
-        College obj = new College() 
+    public static void main(String[] args)
+    {
+
+        try
         {
 
-            @Override
-            void show() {
-              System.out.println("Welcome to Symbiosis");
+            // Writing to the file
+            FileWriter writer = new FileWriter("employee.txt");
+
+            writer.write("Employee ID: 518\n");
+            writer.write("Employee Name: Piyush\n");
+            writer.write("Department: Finance");
+
+            writer.close();
+
+            System.out.println("Data written successfully.");
+
+            // Reading from the file
+            FileReader reader = new FileReader("employee.txt");
+
+            int ch;
+
+            System.out.println("\nEmployee Details:");
+
+            while ((ch = reader.read()) != -1) {
+                System.out.print((char) ch);
             }
 
-        };
-        obj.show();
+            reader.close();
+
+        } 
+        catch (IOException e)
+        {
+
+            System.out.println("Error while handling the file.");
+
+        }
     }
 }
