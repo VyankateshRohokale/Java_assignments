@@ -1,47 +1,55 @@
-import java.io.FileWriter;
+class Mobile {
 
-import java.io.FileReader;
-import java.io.IOException;
+    String brand;
+    String model;
+    double price;
 
-public class Demo
-{
+    // Default Constructor
+    Mobile() {
+        brand = "Samsung";
+        model = "Galaxy A15";
+        price = 18000;
+    }
 
-    public static void main(String[] args)
-    {
+    // Parameterized Constructor
+    Mobile(String brand, String model, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.price = price;
+    }
 
-        try
-        {
+    // Copy Constructor
+    Mobile(Mobile m) {
+        this.brand = m.brand;
+        this.model = m.model;
+        this.price = m.price;
+    }
 
-            // Writing to the file
-            FileWriter writer = new FileWriter("employee.txt");
+    void display() {
+        System.out.println("Brand : " + brand);
+        System.out.println("Model : " + model);
+        System.out.println("Price : ₹" + price);
+        System.out.println();
+    }
 
-            writer.write("Employee ID: 518\n");
-            writer.write("Employee Name: Piyush\n");
-            writer.write("Department: Finance");
+    public static void main(String[] args) {
 
-            writer.close();
+        // Default constructor
+        Mobile m1 = new Mobile();
 
-            System.out.println("Data written successfully.");
+        // Parameterized constructor
+        Mobile m2 = new Mobile("Apple", "iPhone 15", 60000);
 
-            // Reading from the file
-            FileReader reader = new FileReader("employee.txt");
+        // Copy constructor
+        Mobile m3 = new Mobile(m2);
 
-            int ch;
+        System.out.println("Mobile 1:");
+        m1.display();
 
-            System.out.println("\nEmployee Details:");
+        System.out.println("Mobile 2:");
+        m2.display();
 
-            while ((ch = reader.read()) != -1) {
-                System.out.print((char) ch);
-            }
-
-            reader.close();
-
-        } 
-        catch (IOException e)
-        {
-
-            System.out.println("Error while handling the file.");
-
-        }
+        System.out.println("Duplicate Mobile Record:");
+        m3.display();
     }
 }
