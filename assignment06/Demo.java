@@ -1,55 +1,32 @@
-class Mobile {
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 
-    String brand;
-    String model;
-    double price;
+public class Demo {
 
-    // Default Constructor
-    Mobile() {
-        brand = "Samsung";
-        model = "Galaxy A15";
-        price = 18000;
-    }
+    public static void main(String[] args) throws IOException {
 
-    // Parameterized Constructor
-    Mobile(String brand, String model, double price) {
-        this.brand = brand;
-        this.model = model;
-        this.price = price;
-    }
+        // Writing patient details
+        FileWriter writer = new FileWriter("patient.txt");
 
-    // Copy Constructor
-    Mobile(Mobile m) {
-        this.brand = m.brand;
-        this.model = m.model;
-        this.price = m.price;
-    }
+        writer.write("Patient ID: P101\n");
+        writer.write("Name: Rahul\n");
+        writer.write("Age: 25\n");
+        writer.write("Diagnosis: Fever\n");
 
-    void display() {
-        System.out.println("Brand : " + brand);
-        System.out.println("Model : " + model);
-        System.out.println("Price : ₹" + price);
-        System.out.println();
-    }
+        writer.close();
 
-    public static void main(String[] args) {
+        // Reading patient details
+        FileReader reader = new FileReader("patient.txt");
 
-        // Default constructor
-        Mobile m1 = new Mobile();
+        int ch;
 
-        // Parameterized constructor
-        Mobile m2 = new Mobile("Apple", "iPhone 15", 60000);
+        System.out.println("Patient Details:");
 
-        // Copy constructor
-        Mobile m3 = new Mobile(m2);
+        while ((ch = reader.read()) != -1) {
+            System.out.print((char) ch);
+        }
 
-        System.out.println("Mobile 1:");
-        m1.display();
-
-        System.out.println("Mobile 2:");
-        m2.display();
-
-        System.out.println("Duplicate Mobile Record:");
-        m3.display();
+        reader.close();
     }
 }
